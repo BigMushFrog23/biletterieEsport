@@ -1,0 +1,65 @@
+@startuml billeterie
+hide circle
+' Entities
+entity "events" as events {
+  * event_id : INT <<PK>>
+  --
+  name : VARCHAR(255)
+  description : TEXT
+  venue : VARCHAR(255)
+  start_date : DATETIME
+  end_date : DATETIME
+  capacity : INT
+  created_at : DATETIME
+}
+
+entity "clients" as clients {
+  * client_id : INT <<PK>>
+  --
+  first_name : VARCHAR(100)
+  last_name : VARCHAR(100)
+  email : VARCHAR(200)
+  phone : VARCHAR(30)
+  city : VARCHAR(100)
+  created_at : DATETIME
+}
+
+entity "tickets" as tickets {
+  * ticket_id : INT <<PK>>
+  --
+  event_id : INT <<FK>>
+  client_id : INT <<FK>>
+  category : VARCHAR(50)
+  price : DECIMAL(8,2)
+  seat : VARCHAR(50)
+  purchase_date : DATETIME
+  status : VARCHAR(30)
+  qr_code : VARCHAR(255)
+}
+
+entity "orders" as orders {
+  * order_id : INT <<PK>>
+  --
+  client_id : INT <<FK>>
+  total_amount : DECIMAL(10,2)
+  created_at : DATETIME
+  status : VARCHAR(30)
+}
+
+entity "payments" as payments {
+  * payment_id : INT <<PK>>
+  --
+  order_id : INT <<FK>>
+  amount : DECIMAL(10,2)
+  method : VARCHAR(50)
+  paid_at : DATETIME
+  status : VARCHAR(30)
+}
+
+' Relationships
+clients ||--o{ orders : places
+orders ||--o{ tickets : contains
+events ||--o{ tickets : includes
+orders ||--o{ payments : paid_by
+
+@enduml
