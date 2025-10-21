@@ -25,7 +25,7 @@ Database: MySQL
 1. Clone the repository (or download files).  
 2. Import `sql/billeterie.sql` into a MySQL database (e.g., `mysql -u root -p < billeterie.sql`).  
 3. Open `modélisation/billeterie.puml` in a PlantUML editor to view the ER diagram.  
-4. Edit `/src` PHP files to access or manipulate the database.
+4. Edit `/src` java files to access or manipulate the database.
 
 ## Notes
 - This package contains a complete schema and realistic sample data:  
