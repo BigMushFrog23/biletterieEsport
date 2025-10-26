@@ -20,19 +20,11 @@ public class Main {
         TicketModel ticketModel = new TicketModel();
         ticketModel.getAll();
         
-        // Test récupération par ID
         System.out.println("\n=== TEST GET BY ID ===");
         eventModel.getId(1);
         clientModel.getId(1);
         orderModel.getId(1);
         paymentModel.getId(1);
         ticketModel.getId(1);
-        
-        // Test insertion (décommentez pour tester)
-        /*
-        System.out.println("\n=== TEST INSERTION ===");
-        String[] newClient = {"John", "Doe", "john.doe@example.com", "+123456789", "Paris"};
-        clientModel.insertNewRow(newClient);
-        */
     }
 }
